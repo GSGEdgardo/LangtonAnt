@@ -57,11 +57,11 @@ namespace LangtonAnt.LangtonsAntLogic
                 {
                     if (cells[i][j] == CellState.White)
                     {
-                        Console.Write("⬜");
+                        Console.Write("W");
                     }
                     else
                     {
-                        Console.Write("⬛");
+                        Console.Write("B");
                     }
                 }
                 Console.WriteLine();
