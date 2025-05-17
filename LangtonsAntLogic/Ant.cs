@@ -11,11 +11,14 @@ namespace LangtonAnt.LangtonsAntLogic
         public int Row { get; private set; }
         public int Col { get; private set; }
         public Direction FacingDirection { get; private set; }
-        public Ant(int startRow, int startCol)
+        // or the chaos agent^2, but is a bool, false is normal behavior and true is reverse behavior
+        private readonly bool reverseBehavior; 
+        public Ant(int startRow, int startCol, bool reverse)
         {
             Row = startRow;
             Col = startCol;
             FacingDirection = Direction.North;
+            this.reverseBehavior = reverse;
         }
 
         // This method change the facing direction of the ant based on the current cell state
@@ -39,13 +42,13 @@ namespace LangtonAnt.LangtonsAntLogic
             */
             if (currentState == CellState.White)
             {
-                // Turn to the right, 
-                FacingDirection = (Direction)(((int)FacingDirection + 1) % 4);
+                // if normal Turn to the right, if chaotic Turn to the left
+                FacingDirection = (Direction)(((int)FacingDirection + (reverseBehavior ? 3 : 1)) % 4);
             }
             else
             {
-                // Turn to the left
-                FacingDirection = (Direction)(((int)FacingDirection + 3) % 4);
+                // if normal Turn to the left, if chaotic Turn to the right
+                FacingDirection = (Direction)(((int)FacingDirection + (reverseBehavior ? 1 : 3)) % 4);
             }
         }
 

@@ -139,5 +139,12 @@ namespace LangtonAnt.LangtonsAntLogic
             return (rowOffset, colOffset);
         }
 
+        public (int row, int col) GetRandomPosition()
+        {
+            var rand = new Random();
+            int row = rand.Next(cells.Count);
+            int col = rand.Next(cells[0].Count);
+            return (row, col);
+        }
     }
 }

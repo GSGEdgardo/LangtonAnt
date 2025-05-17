@@ -4,11 +4,11 @@ public class Program
     public static void Main() 
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.CursorVisible = false;
 
         var simulation = new LangtonsAntSimulation();
         for (int i = 0; i < 10000; i++) 
         {
-            Console.Clear();
             simulation.PrintGrid();
             simulation.Step();
             Thread.Sleep(100);
