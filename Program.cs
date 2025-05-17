@@ -3,8 +3,10 @@ public class Program
 {
     public static void Main() 
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
         var simulation = new LangtonsAntSimulation();
-        for (int i = 0; i < 100; i++) 
+        for (int i = 0; i < 10000; i++) 
         {
             Console.Clear();
             simulation.PrintGrid();

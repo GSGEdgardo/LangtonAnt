@@ -49,22 +49,44 @@ namespace LangtonAnt.LangtonsAntLogic
         }
 
         // This method prints the grid to the console
-        public void PrintGrid() 
+        public void PrintGrid(List<Ant> ants) 
         {
-            for (int i = 0; i < Rows; i++) 
+            // Create a dictionary to store the position and direction of each ant
+            var antPositions = new Dictionary<(int, int), Direction>();
+            foreach (var ant in ants)
             {
-                for (int j = 0; j < Cols; j++) 
+                // Save the current position and direction of each ant
+                antPositions[(ant.Row, ant.Col)] = ant.FacingDirection;
+            }
+            for (int i = 0; i < Rows; i++)
                 {
-                    if (cells[i][j] == CellState.White)
+                    for (int j = 0; j < Cols; j++)
                     {
-                        Console.Write("░");
-                    }
-                    else
+                        if (antPositions.TryGetValue((i, j), out Direction dir))
+                    /* Here's the explanation of this
+                     * we need to obtain the ant position and direction, so we create a dictionary
+                     * but the thing with the previous line is that we need to check if the ant is in this position
+                     * the out keyword is used to check if the ant is in this position, and if it is, we get the direction
+                     */
                     {
-                        Console.Write("█");
+                        char symbol = dir switch
+                            {
+                                Direction.North => '▲',
+                                Direction.East => '▶',
+                                Direction.South => '▼',
+                                Direction.West => '◀',
+                                _ => '?'
+                            };
+                            Console.Write(symbol);
+                        }
+                        else
+                        {
+                            // Normal display: white = ░, black = █
+                            Console.Write(cells[i][j] == CellState.White ? '░' : '█');
+                        }
                     }
-                }
-                Console.WriteLine();
+                    Console.WriteLine();
+
             }
         }
 
