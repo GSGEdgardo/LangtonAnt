@@ -1,7 +1,7 @@
 ﻿# The Langton's Ant Project
 
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?)
-![Last Commit](https://img.shields.io/github/last-commit/GSGEdgardo/Scipy)
+![Last Commit](https://img.shields.io/github/last-commit/GSGEdgardo/LangtonAnt)
 ![Institution](https://img.shields.io/badge/institution-Universidad%20Cat%C3%B3lica%20del%20Norte-blue)
 
 ## Description
