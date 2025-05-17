@@ -12,12 +12,16 @@ public class LangtonsAntSimulation
 
     public void Step() 
     {
-        grid.ExpandGrid(ant.Row, ant.Col);
+        // Ensure grid includes ant’s current position
+        var (rowOffset, colOffset) = grid.ExpandGrid(ant.Row, ant.Col);
+        // Update ant position accodingly
+        ant.AdjustPosition(rowOffset, colOffset);
         var currentState = grid.GetCell(ant.Row, ant.Col);
         ant.Turn(currentState);
         grid.ToggleCell(ant.Row, ant.Col);
         ant.Movement();
-
+        // Ensure that grid includes the new ant position
+        (rowOffset, colOffset) = grid.ExpandGrid(ant.Row, ant.Col);
         grid.ExpandGrid(ant.Row, ant.Col);
     }
 

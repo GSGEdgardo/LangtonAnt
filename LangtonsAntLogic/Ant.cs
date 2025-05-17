@@ -68,5 +68,18 @@ namespace LangtonAnt.LangtonsAntLogic
                     break;
             }
         }
+        
+        // Adjusts the ant’s position after the grid has expanded (if rows/cols added at top/left)
+        public void AdjustPosition(int rowOffset, int colOffset) 
+        {
+            /* Here's the logic behind the ExpandGrid method:
+             * The thing is when you add a new column or a new row, and its like "behind" of the ant, 
+             * behind means left and up, we need to fix the ant position, because the grid is now bigger,
+             * and the ant is not more at 2,2, but at 2,2 + the new row and column added. So we need to 
+             * use the offset to fix the ant position. So we add the offset to the ant position to fix it.
+             */
+            Row += rowOffset;
+            Col += colOffset;
+        }   
     }
 }

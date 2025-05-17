@@ -69,8 +69,12 @@ namespace LangtonAnt.LangtonsAntLogic
         }
 
         // This method expands the grid by adding a new row and column
-        public void ExpandGrid(int row, int col)
+        // Expands the grid as needed and returns how much the ant's position needs to be shifted
+        public (int rowOffset, int colOffset) ExpandGrid(int row, int col)
         {
+            // The explanation of the offset is in Ant class -> AdjustPosition method
+            int rowOffset = 0, colOffset = 0;
+
             while (row < 0)
             {
                 // Enumerable.Repeat(value, count): creates a list of 'count' elements filled with 'value'
@@ -79,6 +83,7 @@ namespace LangtonAnt.LangtonsAntLogic
                 // Insert the new row at the beginning of the grid. Insert takes the index first, then the value.
                 cells.Insert(0, newRow);
                 row++;
+                rowOffset++;
             }
 
             while (row >= Rows)
@@ -98,6 +103,7 @@ namespace LangtonAnt.LangtonsAntLogic
                 foreach (var r in cells)
                     r.Insert(0, CellState.White);
                 col++;
+                colOffset++;
             }
 
             while (col >= Cols)
@@ -106,6 +112,7 @@ namespace LangtonAnt.LangtonsAntLogic
                 foreach (var r in cells)
                     r.Add(CellState.White);
             }
+            return (rowOffset, colOffset);
         }
 
     }
