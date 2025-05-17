@@ -58,6 +58,7 @@ namespace LangtonAnt.LangtonsAntLogic
                 // Save the current position and direction of each ant
                 antPositions[(ant.Row, ant.Col)] = ant.FacingDirection;
             }
+            var sb = new StringBuilder();
             for (int i = 0; i < Rows; i++)
                 {
                     for (int j = 0; j < Cols; j++)
@@ -77,17 +78,18 @@ namespace LangtonAnt.LangtonsAntLogic
                                 Direction.West => '◀',
                                 _ => '?'
                             };
-                            Console.Write(symbol);
-                        }
+                        sb.Append(symbol);
+                    }
                         else
                         {
                             // Normal display: white = ░, black = █
-                            Console.Write(cells[i][j] == CellState.White ? '░' : '█');
+                            sb.Append(cells[i][j] == CellState.White ? '░' : '█');
                         }
                     }
-                    Console.WriteLine();
-
+                    sb.AppendLine();
             }
+            Console.SetCursorPosition(0,0);
+            Console.Write(sb.ToString());
         }
 
         // This method expands the grid by adding a new row and column

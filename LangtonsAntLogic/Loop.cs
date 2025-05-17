@@ -15,6 +15,8 @@ public class LangtonsAntSimulation
         ants.Add(new Ant(initialRows / 2, initialCols / 2));           // Center
         ants.Add(new Ant(initialRows / 2 - 1, initialCols / 2 - 1));   // Top-left
         ants.Add(new Ant(initialRows / 2 + 1, initialCols / 2 + 1));   // Bottom-right
+        ants.Add(new Ant(initialRows /2 + 1, initialCols / 2 - 1)); // Bottom-left
+        ants.Add(new Ant(initialRows /2 - 1, initialCols / 2 + 1)); // Top-right
     }
 
     public void Step() 
